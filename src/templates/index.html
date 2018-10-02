@@ -1,0 +1,35 @@
+<html>
+	<head></head>
+	<title></title>
+	<body>
+		{% if question %}
+			<p>{{ question }}</p>
+		{% endif %}
+		<form method="POST">
+			<textarea name='code' style="background-color: #c4c8ce; height: 30%; width: 50%">{{ content }}</textarea>
+
+
+			<br>
+			<button type="Submit">Submit</button>
+		</form>
+		{% if out %}
+			<p style="background-color: gray; color: white; max-width: 30%">
+				{% for each in out %}
+					{{each}}<br>
+
+				{% endfor %}
+			</p>
+		{% endif %}
+
+		{% if err %}
+			<p style="background-color: gray; color: white; max-width: 20%">
+				{% for each in err %}
+					{{each}}<br>
+
+				{% endfor %}
+			</p>
+
+		{% endif %}
+
+	</body>
+</html>

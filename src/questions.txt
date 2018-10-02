@@ -1,0 +1,3 @@
+Q: Print sum of two integers.
+
+Q: Print multipplication of two integers.

@@ -1,0 +1,33 @@
+from flask import Flask, jsonify, request
+import json
+from os import system
+import subprocess
+
+
+
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def index():
+	return jsonify("Working")
+
+@app.route('/run', methods=["POST"])
+def execute_program():
+
+	content = request.stream.read()
+
+
+	filename = "filename.py"
+	with open(filename, 'wb') as fp:
+		fp.write(content)
+
+	p = subprocess.Popen(["python", filename], stdout=subprocess.PIPE)
+
+	out, err = p.communicate()
+	
+	return out
+
+if __name__ == '__main__':
+	app.run(host='0.0.0.0')	
